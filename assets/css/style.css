@@ -1,0 +1,23 @@
+.jumbotron {
+color: black;
+font-weight: bold;
+margin-top: 20px;
+background-image: url("../images/hogwarts2.jpg");
+background-size: cover;
+font-family: 'Cinzel', serif;
+}
+
+h1 {
+    padding: 20px;
+    background-color: white;
+    opacity: .50;
+}
+
+
+#form {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    border: gray solid 4px;
+    padding: 20px;
+}
+
