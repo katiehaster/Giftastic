@@ -48,7 +48,9 @@ $("#submitButton").on("click", function (event) {
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
 
-$(".hpChar").on("click", function () {
+
+
+$("#charButtons").on("click", ".hpChar", function() {
     
     console.log($(this).data("name"));
 
