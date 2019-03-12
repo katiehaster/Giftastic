@@ -3,7 +3,7 @@
 var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley", "Dumbledore", "McGonagall", "Snape"];
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-characters + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
+"character" + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
 
 
 
@@ -22,6 +22,7 @@ function renderButtons() {
         a.addClass("hpChar");
         // Adding a data-attribute
         a.attr("data-name", characters[i]);
+        // console.log(a.data("name"));
         // Providing the initial button text
         a.text(characters[i]);
         // Adding the button to the buttons-view div
@@ -36,7 +37,7 @@ $("#submitButton").on("click", function (event) {
     // This line grabs the input from the textbox
     var character = $("#userInput").val().trim();
 
-    // The movie from the textbox is then added to our array
+    // The character from the textbox is then added to our array
     characters.push(character);
 
     // Calling renderButtons which handles the processing of our movie array
@@ -49,9 +50,12 @@ renderButtons();
 
 $(".hpChar").on("click", function () {
     
+    console.log($(this).data("name"));
 
+    var charNameButton = ($(this).data("name"));
+    
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    submitButton + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10"; 
+    charNameButton + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10"; 
 
     $.ajax({
         url: queryURL,
@@ -90,16 +94,17 @@ $(".hpChar").on("click", function () {
 
                 // onclick for each gif - animate - still
 
-                var state = $(this).attr("src", results.images.fixed_height_still.url);
+                // var state = $(this).attr("src", results.images.fixed_height_still.url);
                 
-                console.log(state);
+                // console.log(state);
 
 
-                    $("charImage").on("click", function () {
-                        if (state === true) {
-                            charImage.attr("src", results.images.fixed_height.url)
-                        }
-                    })
+                //     $("charImage").on("click", function () {
+                //         if (state === true) {
+                            
+                //             charImage.attr("src", results.images.fixed_height.url)
+                //         }
+                //     })
 
 
                 // var state = $(this).attr("src", results.images);
