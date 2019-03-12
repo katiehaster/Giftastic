@@ -3,7 +3,7 @@
 var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley", "Dumbledore", "McGonagall", "Snape"];
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    "characters" + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
+characters + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
 
 
 
@@ -90,7 +90,16 @@ $(".hpChar").on("click", function () {
 
                 // onclick for each gif - animate - still
 
+                var state = $(this).attr("src", results.images.fixed_height_still.url);
+                
+                console.log(state);
 
+
+                    $("charImage").on("click", function () {
+                        if (state === true) {
+                            charImage.attr("src", results.images.fixed_height.url)
+                        }
+                    })
 
 
                 // var state = $(this).attr("src", results.images);
