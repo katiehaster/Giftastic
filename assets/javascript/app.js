@@ -3,7 +3,7 @@
 var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley", "Dumbledore", "McGonagall", "Snape"];
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-"character" + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
+    "character" + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
 
 
 
@@ -50,14 +50,14 @@ renderButtons();
 
 
 
-$("#charButtons").on("click", ".hpChar", function() {
-    
-    console.log($(this).data("name"));
+$("#charButtons").on("click", ".hpChar", function () {
+
+    $("#gifs").empty();
 
     var charNameButton = ($(this).data("name"));
-    
+
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    charNameButton + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10"; 
+        charNameButton + "&api_key=lzN4naF8vL5ezIjFsfSV71y2gPRedGt0&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -66,9 +66,6 @@ $("#charButtons").on("click", ".hpChar", function() {
 
 
         .then(function (response) {
-
-            // read the response object and identify what we need
-            console.log(response);
 
             // store the data object as a variable so that we can loop over it
             var results = response.data;
@@ -82,7 +79,6 @@ $("#charButtons").on("click", ".hpChar", function() {
                 // stores rating from results object
                 var rating = results[i].rating;
 
-
                 // use jquery to create a new html p tag and using jquery .text() method, add rating as text
                 var p = $("<p>").text("Rating: " + rating);
 
@@ -91,41 +87,12 @@ $("#charButtons").on("click", ".hpChar", function() {
 
                 // reference personImage and using jquery .attr() method reference the url from the response object and feed it to the src attribute
                 charImage.attr("src", results[i].images.fixed_height_still.url);
+                charImage.attr("data-still", results[i].images.fixed_height_still.url);
+                charImage.attr("data-animate", results[i].images.fixed_height.url);
+                // charImage.attr("data-state", "");
                 charImage.attr("class", "gif");
+
                 console.log(charImage);
-
-                // onclick for each gif - animate - still
-
-                // var state = $(this).attr("src", results.images.fixed_height_still.url);
-                
-                // console.log(state);
-
-
-                //     $("charImage").on("click", function () {
-                //         if (state === true) {
-                            
-                //             charImage.attr("src", results.images.fixed_height.url)
-                //         }
-                //     })
-
-
-                // var state = $(this).attr("src", results.images);
-                // console.log(state);
-
-                // charImage
-                // if (state === fixed_height_still) {
-                // var animate = $(this).attr('data-animate');
-                // $(this).attr('src', animate);
-                // $(this).attr('data-state', 'animate');
-                // }
-
-                // else {
-                // var still = $(this).attr('data-still');
-                // $(this).attr('src', still);
-                // $(this).attr('data-state', 'still');
-
-
-                // }
 
                 // use jquery .prepend method to render the p variable to our gifDiv
                 gifDiv.prepend(p);
@@ -133,8 +100,27 @@ $("#charButtons").on("click", ".hpChar", function() {
                 // use jquery .prepend method to render the personImage variable to our gifDiv
                 gifDiv.prepend(charImage);
 
-                // using jquery, select the div with id=gift-appear-here and use jquery prepend to render the gifDiv we just created
+                // using jquery, select the div with id=gif-appear-here and use jquery prepend to render the gifDiv we just created
                 $("#gifs").prepend(gifDiv);
-            }
+
+                // onclick for each gif - animate - still
+
+                $(".gif").on("click", function () {
+
+                    var state = $(this).attr("data-state");
+                    console.log("data-state");
+
+                    if (state === "still") {
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                    } else {
+                        $(this).attr("src", $(this).attr("data-still"));
+                        $(this).attr("data-state", "still");
+
+                    }
+
+                });
+
+            };
         });
-})
+});    
