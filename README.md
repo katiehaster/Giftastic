@@ -8,18 +8,20 @@ Press any exisiting button to generate 10 gifs, or, type in a character into the
 
 ## Components Used
 
-HTML
-CSS
-Javascript
-jQuery/ajax
-Bootstrap
-Giphy API
-Google Fonts
-Image - from Pottermore
+*HTML
+*CSS
+*Javascript
+*jQuery/ajax
+*Bootstrap
+*Giphy API
+*Google Fonts
+*Image - from Pottermore
 
 ## Process
 
 I was grateful to have several in-class activities to refer to for this homework. I dissected each pertinent in-class activity into it's different components - what was achieved, and how - and I got started from there. 
 I enjoy building my HTML/CSS layout first - it feels motivating to have a customized framework for each project. 
+
+https://katiehaster.github.io/Giftastic/
 
 
