@@ -8,14 +8,14 @@ Press any exisiting button to generate 10 gifs, or, type in a character into the
 
 ## Components Used
 
-*HTML
-*CSS
-*Javascript
-*jQuery/ajax
-*Bootstrap
-*Giphy API
-*Google Fonts
-*Image - from Pottermore
+* HTML
+* CSS
+* Javascript
+* jQuery/ajax
+* Bootstrap
+* Giphy API
+* Google Fonts
+* Image - from Pottermore
 
 ## Process
 
